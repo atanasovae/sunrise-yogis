@@ -1,0 +1,16 @@
+$colors: (
+  transparent: transparent,
+  current: currentColor,
+  white: #ffffff,
+  moss: #5B623A,
+  valleymoss: #897E45,
+  yosemiteivory: #EDD9B7,
+  meadow: #C46D52,
+  sunshine: #f1ba42,
+  cream: #FBF1E5,
+  yellow: #ffbd59
+);
+
+@function color($key) {
+    @return map-get($colors, $key);
+  }
