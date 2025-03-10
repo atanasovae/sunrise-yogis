@@ -5,29 +5,28 @@ import Link from "next/link";
 import { useState } from "react";
 import "../../src/styles/menu.scss";
 
-
 const Menu = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="">
+    <div>
       <Image
         src="/menu.png"
-        alt=""
+        alt="Menu"
         width={25}
         height={25}
         className="cursor-pointer"
         onClick={() => setOpen((prev) => !prev)}
       />
       {open && (
-        <div className="menu">
-          <Link href="/">Homepage</Link>
-          <Link href="/">Shop</Link>
-          <Link href="/">Deals</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
-          <Link href="/">Logout</Link>
-          <Link href="/">Cart(1)</Link>
+        <div className="menu fixed top-20 left-0 w-full bg-yellow text-black p-4 flex flex-col items-center justify-center gap-8 z-10 font-light font-cormorant">
+          <Link href="/" className="block">Начало</Link>
+          <Link href="/" className="block">Пазарувай</Link>
+          <Link href="/" className="block">Промоции</Link>
+          <Link href="/" className="block">За нас</Link>
+          <Link href="/" className="block">Контакти</Link>
+          <Link href="/" className="block">Отпиши се</Link>
+          <Link href="/" className="block">Количка(1)</Link>
         </div>
       )}
     </div>
