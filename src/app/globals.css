@@ -8,3 +8,11 @@
 body {
     font-family: 'Cormorant Garamond'
 }
+
+.scrollbar-hide::-webkit-scrollbar{
+display: none;
+}
+
+.scrollbar-hide{
+    scrollbar-width: none;
+}
