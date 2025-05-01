@@ -14,11 +14,12 @@ const config: Config = {
         white: '#ffffff',
         moss: '#5B623A', // Corrected quotation marks
         valleymoss: '#897E45',
+        fadedgreen: '#eef6ec',
         yosemiteivory: '#EDD9B7',
         meadow: '#C46D52',
         sunshine: '#f1ba42',
         cream: '#FBF1E5',
-        yellow: '#ffbd59'
+        yellow: '#ffbd59',
 
 
       },

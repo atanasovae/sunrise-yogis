@@ -21,7 +21,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Постелки
                 </h1>
               </Link>
               <Link
@@ -39,7 +39,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Дрехи
                 </h1>
               </Link>
               <Link
@@ -57,7 +57,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Аксесоари
                 </h1>
               </Link>
               <Link
@@ -75,7 +75,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Ритрийти
                 </h1>
               </Link>
               <Link
@@ -93,7 +93,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Пилатес
                 </h1>
               </Link>
               <Link
@@ -111,7 +111,7 @@ const CategoryList = () => {
                   />
                 </div>
                 <h1 className="mt-8 font-light text-xl tracking-wide">
-                  Name
+                  Йога
                 </h1>
               </Link>
               <Link

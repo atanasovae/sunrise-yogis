@@ -15,8 +15,6 @@ const Navbar = () => {
       <div className="h-full flex items-center justify-between lg:hidden">
       <Link href="/" className="flex items-center gap-3">
             <Image src="/logo/sunrise-yogis-logo-black.png" alt="Logo Left" width={250} height={250} />
-            {/* <div className="text-l tracking-wide">SUNRISE YOGIS</div>
-            <Image src="/try-sun.png" alt="Logo Right" width={60} height={60} /> */}
           </Link>
         <Menu />
       </div>
