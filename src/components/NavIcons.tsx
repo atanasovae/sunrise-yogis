@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,10 @@ const NavIcons = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const router = useRouter();
 
-  //TEMPORARY UNTIL WE HAVE AUTHENTICATION
+  const cartRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+
+  // TEMPORARY UNTIL WE HAVE AUTHENTICATION
   const isLoggedIn = true;
 
   const handleProfile = () => {
@@ -22,12 +25,11 @@ const NavIcons = () => {
     }
   };
 
-  // Close the dropdown if clicked outside
+  // Close profile if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // Check if the clicked target is outside the profile dropdown
-      if (!(event.target instanceof HTMLElement)) return; // Safeguard for non-HTML events
-      if (!event.target.closest(".profile-dropdown")) {
+      if (!(event.target instanceof HTMLElement)) return;
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
         setIsProfileOpen(false);
       }
     };
@@ -35,10 +37,29 @@ const NavIcons = () => {
     if (isProfileOpen) {
       document.addEventListener("click", handleClickOutside);
     }
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isProfileOpen]);
+
+  // Close cart if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!(event.target instanceof HTMLElement)) return;
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        setIsCartOpen(false);
+      }
+    };
+
+    if (isCartOpen) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isCartOpen]);
 
   return (
     <div className="flex items-center relative gap-x-4">
@@ -51,12 +72,15 @@ const NavIcons = () => {
         onClick={handleProfile}
       />
       {isProfileOpen && (
-        <div className="absolute p-4 rounded-md top-12 left-0 bg-cream text-black text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20 profile-dropdown">
-          
+        <div
+          ref={profileRef}
+          className="absolute p-4 rounded-md top-12 left-0 bg-cream text-black text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20 profile-dropdown"
+        >
           <Link href="/" className="block">Профил</Link>
           <div className="mt-2 cursor-pointer">Отпиши се</div>
         </div>
       )}
+
       <Image
         src="/notification.png"
         alt="Notifications Icon"
@@ -64,18 +88,25 @@ const NavIcons = () => {
         height={25}
         className="cursor-pointer"
       />
-      <div className="relative cursor-pointer">
-      <Image
-        src="/cart.png"
-        alt="Cart Icon"
-        width={25}
-        height={25}
-        className="cursor-pointer"
-        onClick={()=> setIsCartOpen((prev) => !prev)}
-      />
-      <div className="absolute  bottom-4 left-5 w-4 h-4 bg-black rounded-full text-cream text-sm flex items-center justify-center">2</div>
+
+      <div className="relative cursor-pointer" onClick={() => setIsCartOpen((prev) => !prev)}>
+        <Image
+          src="/cart.png"
+          alt="Cart Icon"
+          width={25}
+          height={25}
+          className="cursor-pointer"
+        />
+        <div className="absolute bottom-4 left-5 w-4 h-4 bg-black rounded-full text-cream text-sm flex items-center justify-center">
+          2
+        </div>
       </div>
-      {isCartOpen && <CartModal/>}
+
+      {isCartOpen && (
+        <div ref={cartRef} className="absolute top-12 right-0 z-20 cart-dropdown">
+          <CartModal />
+        </div>
+      )}
     </div>
   );
 };
